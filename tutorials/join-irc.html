@@ -1,1 +1,30 @@
-.
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Join the HueStudios IRC server</title>
+	</head>
+	<body style="background-color:#232323;font-family:'Lucida Console',Monaco,monospace;color:#CFCFCF;">
+		<div style="margin-top:32px;margin-left:32px;margin-right:32px;margin-bottom:32px;">
+			<h1 style="margin-bottom:12px;"><a style="color:#CFCFCF;"href="./index.html">Tutorials</a></h1>
+			<div style="background-color:#79B03F;height:4px;"></div>
+			<h2 style="margin-top:16px;margin-bottom:0px;">How to connect to the IRC server</h2>
+			<p>Connecting to the HueStudios IRC server can potentially be a nontrivial task, due to the fact that it is hosted as a tor hidden service.
+			<br>This tutorial will guide you through the process of utilizing the onion router and an IRC client to connect to the IRC server, but will also provide you with the knowledge to make any other application run through a secure tor connection.</p>
+			<h3 id="setting_up_tor">Setting up tor</h3>
+			<p>Regardless of the platform being used, the onion router generally works by setting up a SOCKS5 proxy to which other applications can connect. This proxy acts as a bridge that the application can use to seamlessly route the traffic through the tor network. 
+			<br>Therefore, the first objective is to set up the tor proxy that the IRC client will use, and doing so will depend on the platform that you desire to use:</p>
+			<h4 id="setting_up_tor_windows">Windows</h4>
+			<p>Head over to <a style="color:#3EAC96;" href="https://www.torproject.org/download/">The Tor Project download page</a> and download the tor browser bundle for Windows. Install it in the same way you would with any other program.
+			<br>When you start the tor browser, it automatically runs the tor binary and sets up the socks proxy on <b>localhost:9150</b> meaning that, in theory, you could simply leave the browser itself open and work with the proxy that it provides. However, most users don't want to have a full browser running just for a proxy, in which case you will want to run the tor executable by itself.
+			<br>To do this, go to the directory where you installed the tor browser bundle. You will need to find two files in this directory tree: <b>tor.exe</b> and <b>torrc.defaults</b> (This last file can have multiple names depending on your version of your Tor Browser Bundle. Simply look for the file that contains the substring "torrc"). Put those two files in the same directory, and then <b>navigate to it on a terminal</b>. Finally, type in the command `tor.exe -f .\torrc.defaults`. This will run the tor binary without the rest of the browser bundle.
+			<h4 id="setting_up_tor_android">Android</h4>
+			<p>Download the <a style="color:#3EAC96;" href="https://play.google.com/store/apps/details?id=org.torproject.android">Orbot android application</a> from Play Playstore. Open it, activate <b>"VPN mode"</b>, and then tap the gear icon on the bottom of the UI to add your IRC application of choice to the list of <b>tor-enabled apps</b>. Finally, tap the <b>onion</b> button and wait untill it turns green.</p>
+			<h4 id="setting_up_tor_linux">Linux</h4>
+			<p>Install the `tor` pakage using the package manager provided by your Linux distribution. Then, use the commands `service tor enable` and `service tor start` to start the tor service. This will set up the socks proxy on <b>localhost:9050</b>.
+			<br>Alternatively, you can follow the same steps described in the <a href="#setting_up_tor_windows" style="color:#3EAC96;">Windows</a> section, but downloading the Tor Browser Bundle for Linux instead of the Windows one.</p>
+			<h3 id="connecting_irc_client">Connecting the irc client</h3> 
+			<p>To connect to the server, you will need an irc client. Some recommendations are: <a style="color:#3EAC96;" href="https://hexchat.github.io/">Hexchat (GUI)</a>, <a style="color:#3EAC96;" href="https://weechat.org/">WeeChat (CLI)</a> and <a style="color:#3EAC96;" href="https://play.google.com/store/apps/details?id=io.mrarm.irc">Revolution IRC (Android)</a>. If you are on a desktop platform, you will need to configure your IRC client to use the <b>SOCKS5</b> proxy on either <b>localhost:9050</b> or <b>localhost:9150</b>, depending on the method you used to set up tor. Otherwise, you must make sure that you <b>add your IRC client to the list of tor-enabled applications</b> as described on the <a href="#setting_up_tor_android" style="color:#3EAC96;">Android</a> section. 
+			<br>If you successfully enabled your IRC client to use tor, you should now be able to connect to <span style="color:#FF5C5C"><b>5vqi5ghrmbgxmglm.onion:6667</b></span> (Make sure you <b>disable SSL</b> authentication).</p>
+		</div>
+	</body>
+</html>
